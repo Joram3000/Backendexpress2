@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      teacher: {
+      isteacher: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },

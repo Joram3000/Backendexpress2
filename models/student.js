@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      student.belongsTo(models.user);
     }
   }
   student.init(
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      teacherId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

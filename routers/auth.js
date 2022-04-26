@@ -2,11 +2,15 @@ const bcrypt = require("bcrypt");
 const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
+
 const User = require("../models/").user;
 const Student = require("../models").student;
+
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
+
+//let students; // stupid
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -19,9 +23,8 @@ router.post("/login", async (req, res, next) => {
     }
 
     const user = await User.findOne({ where: { email } });
-    const students = await Student.findAll({ where: { teacherId: user.id } }); //
-    console.log(students);
-    // include: [{ model: Student, where: { teacherId: user.id } }],
+    const students = await Student.findAll({ where: { userId: user.id } }); //
+
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(400).send({
         message: "User with that email not found or password incorrect",

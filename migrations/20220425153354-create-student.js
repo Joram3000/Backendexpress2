@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      teacherId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
